@@ -27,31 +27,31 @@ Let \(\alpha\) denote the angle between the vehicle’s heading and the straight
 From the circle geometry (law of sines),
 
 $$
-\frac{\ell_d}{\sin(2\alpha)} \=\ \frac{R}{\sin\left(\tfrac{\pi}{2}-\alpha\right)} \, .
+\frac{\ell_d}{\sin(2\alpha)} \=\ \frac{R}{\sin\left(\tfrac{\pi}{2}-\alpha\right)}.
 $$
 
 Using $$\(\sin(2\alpha)=2\sin\alpha\cos\alpha\)$$ and $$\(\sin(\tfrac{\pi}{2}-\alpha)=\cos\alpha\)$$,
 
 $$
-\frac{\ell_d}{\sin\alpha\,\cos\alpha} \=\ \frac{R}{\cos\alpha} \, .
+\frac{\ell_d}{\sin\alpha\,\cos\alpha} \=\ \frac{R}{\cos\alpha}.
 $$
 
 Since curvature is the inverse of radius, we obtain
 
 $$
-k \=\ \frac{1}{R} \=\ \frac{2\,\sin\alpha}{\ell_d} \, .
+k \=\ \frac{1}{R} \=\ \frac{2\,\sin\alpha}{\ell_d}.
 $$
 
 The steering–radius relation from the bicycle model is
 
 $$
-R \=\ \frac{L}{\tan\delta} \, ,
+R \=\ \frac{L}{\tan\delta},
 $$
 
 hence the steering angle that reaches the target point is
 
 $$
-\delta \=\ \arctan\Big(\frac{2L\,\sin\alpha}{\ell_d}\Big) \, .
+\delta \=\ \arctan\Big(\frac{2L\,\sin\alpha}{\ell_d}\Big).
 $$
 
 ---
@@ -63,13 +63,13 @@ The vehicle’s longitudinal/lateral velocities and yaw rate are
 $$
 \dot{x} \=\ v\cos\theta,\qquad
 \dot{y} \=\ v\sin\theta,\qquad
-\dot{\theta} \=\ \omega \;=\; \frac{v}{R} \, .
+\dot{\theta} \=\ \omega \=\ \frac{v}{R}
 $$
 
 Equivalently, using the steering relation,
 
 $$
-\dot{\theta} \=\ \frac{v\,\tan\delta}{L} \, .
+\dot{\theta} \=\ \frac{v\tan\delta}{L}
 $$
 
 ---
@@ -90,5 +90,5 @@ $$
 \qquad
 k \=\ \frac{2\sin\alpha}{\ell_d},
 \qquad
-k \=\ \frac{2\,e}{\ell_d^{\,2}} \, .
+k \=\ \frac{2}{\ell_d^{\,2}}e.
 $$
