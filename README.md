@@ -88,7 +88,7 @@ Because curvature grows with cross-track error $$\(e\)$$, larger errors yield st
 $$
 \sin\alpha \=\ \frac{e}{\ell_d},
 \qquad
-k \=\ \frac{2\,\sin\alpha}{\ell_d},
+k \=\ \frac{2\sin\alpha}{\ell_d},
 \qquad
 k \=\ \frac{2\,e}{\ell_d^{\,2}} \, .
 $$
