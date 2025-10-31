@@ -92,3 +92,56 @@ k \=\ \frac{2\sin\alpha}{\ell_d},
 \qquad
 k \=\ \frac{2}{\ell_d^{\,2}}e.
 $$
+
+## 2. Stanley Controller
+
+The **Stanley controller** computes a steering command that drives a vehicle to follow a reference path by regulating (i) the **heading error** with respect to the path tangent and (ii) the **cross-track error** (lateral offset) to the path.
+
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/69dd06e6-0da9-461e-824c-cd6ef2215bc2" />
+
+### Notation
+- $$\( (x, y, \psi) \)$$: vehicle rear-axle pose (world frame), heading $$\( \psi \)$$.
+- $$\( \psi_p \)$$: path heading (tangent angle) at the closest point on the path.
+- $$\( e \)$$: signed cross-track error (lateral distance from rear axle to the path, left $$\(+\)$$, right $$\(-\))$$.
+- $$\( v \)$$: vehicle speed.
+- $$\( L \)$$: wheelbase, $$\( \delta \)$$: steering angle.
+
+### Heading error
+The **heading error** is
+
+$$
+\theta_e = \mathrm{atan2}\big(\sin(\psi_p - \psi),\, \cos(\psi_p - \psi)\big)
+$$
+
+### Stanley steering law
+The steering command combines heading regulation and lateral regulation:
+
+$$
+\delta \=\ \theta_e \+\ \arctan\Big(\frac{k\,e}{v + \varepsilon}\Big),
+$$
+
+where $$\(k>0\)$$ is the cross-track gain and $$\(\varepsilon\ge 0\)$$ is a small constant to avoid division by zero and to temper the control at very low speeds (e.g., $$\(\varepsilon \approx 0.1\sim0.5\)$$).
+
+> **Sign convention:** define $$\(e>0\)$$ when the path lies to the **left** of the vehicle’s longitudinal axis. Ensure the closest-point projection and the path tangent $$\( \psi_p \)$$ are computed consistently with this convention.
+
+### Kinematics (bicycle model)
+For completeness, the yaw-rate relation is
+
+$$
+\dot{\psi} \=\ \frac{v}{L}\tan\delta,
+$$
+
+and the planar kinematics are
+
+$$
+\dot{x} \=\ v\cos\psi,\qquad
+\dot{y} \=\ v\sin\psi.
+$$
+
+### Practical notes
+- **Saturation:** clip $$\( \delta \)$$ to hardware limits $$\( |\delta| \le \delta_{\max} \)$$.
+- **Gain tuning:** larger $$\(k\)$$ reduces steady cross-track error but may induce oscillation; use a modest $$\(k\)$$ and nonzero $$\(\varepsilon\)$$ for low-speed robustness.
+- **Projection:** compute the closest point on the reference path to obtain $$\(e\)$$ and $$\( \psi_p \)$$ update every control cycle.
+
+
+
