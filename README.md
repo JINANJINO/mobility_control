@@ -1,4 +1,4 @@
-# mobility control
+# Steering control
 
 ## 1. Pure Pursuit Algorithm
 
